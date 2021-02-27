@@ -1,0 +1,52 @@
+﻿@model IEnumerable<MvcStructure.Models.Employee>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr class="btn-primary">
+        <th>
+            Name
+        </th>
+        <th>
+            Address
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            MobileNo
+        </th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr class="btn-info">
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MobileNo)
+            </td>
+            <td style="color:white !important">
+                <a href="@Url.Action("Edit","Home", new { id = item.EmpId } )" style="color:white !important">Edit</a> |
+                <a href="@Url.Action("Details","Home", new { id = item.EmpId })" style="color:white !important">Details</a> |
+                <a href="@Url.Action("Delete","Home", new { id = item.EmpId } )" style="color:white !important">Delete</a>
+
+            </td>
+        </tr>
+    }
+
+</table>
